@@ -12,61 +12,6 @@
   {% for tag in page.taxonomies.tags %}
     <link rel="prerender"  href="{{ get_taxonomy_url(kind="tags", name=tag) }}">
   {% endfor %}
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://google.com/article"
-      },
-      "headline": "{{ page.title }}",
-      "image": [],
-      "datePublished": "{{ page.date | date(format="%+") }}",
-      "dateModified": "{{ page.date | date(format="%+") }}"{% if config.extra.author %},
-      "author": {
-        "@type": "Person",
-        "name": "{{ config.extra.author }}"
-      },
-       "publisher": {
-        "@type": "Organization",
-        "name": "{{ config.extra.author }}"{% if config.extra.icon %},
-        "logo": {
-          "@type": "ImageObject",
-          "url": "{{ get_url(path=config.extra.icon) | safe }}"
-        }
-        {% endif %}
-      }
-      {% endif %}
-    }
-  </script>
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {% set len = page.ancestors | length %}
-
-        {% for section_path in page.ancestors %}
-        {
-          {% set section = get_section(path=section_path) %}
-          "@type": "ListItem",
-          "position": {{ loop.index }},
-          "name": "{{ section.title }}",
-          "item": "{{ section.permalink | safe }}"
-        },
-        {% endfor %}
-        {
-          "@type": "ListItem",
-          "position": {{ len + 1 }},
-          "name": "{{ page.title }}",
-          "item": "{{ page.permalink | safe }}"
-        }
-      ]
-    }
-  </script>
 {% endblock %}
 
 {% block content %}
@@ -75,7 +20,7 @@
     <small>
       {{ page.date | date(format="%B %d, %Y") }}
       {% if page.taxonomies.tags %}
-        - 
+        -
         <span class="tags">
           {% for tag in page.taxonomies.tags %}
             <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{ tag }}</a>
