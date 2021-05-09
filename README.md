@@ -1,4 +1,7 @@
-![preview image](https://i.imgur.com/IWoJtkF.png)
+# Personal Additions
+This is my own fork of the [simple-dev-blog](https://www.getzola.org/themes/simple-dev-blog/) theme for the [zola](https://www.getzola.org/themes/simple-dev-blog/) Static Site Generator. I made it because I found it difficult to locate zola themes (or other SSG's themes, for that matter) without any external dependencies, JavaScript, or trackers.
+
+**Below is the README from the orignal simple-dev-blog theme.** The instructions for setup remain the same.
 
 # simple-dev-blog-zola-starter
 
